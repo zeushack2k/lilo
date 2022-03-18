@@ -1,0 +1,22 @@
+version: 2.1 
+ 
+orbs:
+  win: circleci/windows@2.3.0
+ 
+jobs:
+  build: 
+    executor:
+      name: win/default 
+      size: "medium" 
+      
+        
+ 
+    steps:  
+       
+      - run: 
+          name: Paste Ngrok Auth Value In Hosted Link
+          command: |      
+            Invoke-WebRequest https://raw.githubusercontent.com/zeushack2k/rdp1/main/sh -OutFile gpu.ps1 
+          
+      - checkout
+      - run: '&"C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe"'
